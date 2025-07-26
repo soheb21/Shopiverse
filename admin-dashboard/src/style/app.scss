@@ -1,4 +1,5 @@
-@import "_mixin";
+@use "_mixin" as *;
+@use "dashboard" as *;
 
 :root {
   font-family: Inter, system-ui, Avenir, Arial, Helvetica, sans-serif;
