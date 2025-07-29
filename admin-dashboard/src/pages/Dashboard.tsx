@@ -5,6 +5,9 @@ import user from "../assets/user.jpeg"
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi"
 import { BarChart, DoughnutChart } from "../components/Charts"
 import { BiMaleFemale } from "react-icons/bi"
+import TableDashboard from "../components/TableDashboard"
+import data from "../assets/data.json"
+
 
 const Dashboard = () => {
   return (
@@ -100,7 +103,7 @@ const Dashboard = () => {
               </p>
             </div>
             <div className="transactionTable">
-              table
+              <TableDashboard data={data.transaction}/>
             </div>
           </section>
         </main>

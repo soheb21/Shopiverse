@@ -1,5 +1,6 @@
 @use "_mixin" as *;
 @use "dashboard" as *;
+@use "product" as *;
 
 :root {
   font-family: Inter, system-ui, Avenir, Arial, Helvetica, sans-serif;
@@ -56,6 +57,64 @@ a {
             @include flex(row, unset);
           }
         }
+      }
+    }
+  }
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  th {
+    font-weight: bold;
+    color: #00000f;
+    font-size: 1rem;
+    padding: 1.8rem, 0.8rem;
+  }
+  tbody {
+    tr {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.093);
+    }
+    td {
+      padding: 1rem;
+
+      img {
+        height: 4rem;
+        width: 4rem;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+      a {
+        text-decoration: none;
+        background-color: rbga(44, 104, 255, 0.455);
+        color: rgb(44, 104, 255);
+        padding: 0.25rem 0.5rem;
+        border-radius: 10px;
+      }
+      button {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        cursor: pointer;
+        color: rgb(255, 44, 44);
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+      &:first-child {
+        border-left: none;
+      }
+      &:last-child {
+        border-right: none;
       }
     }
   }
