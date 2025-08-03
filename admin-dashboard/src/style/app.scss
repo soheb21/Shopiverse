@@ -1,6 +1,7 @@
 @use "_mixin" as *;
 @use "dashboard" as *;
 @use "product" as *;
+@use "chart" as *;
 
 :root {
   font-family: Inter, system-ui, Avenir, Arial, Helvetica, sans-serif;
@@ -65,6 +66,7 @@ a {
 .table {
   border-collapse: collapse;
   width: 100%;
+
   th,
   td {
     padding: 8px;
@@ -92,8 +94,8 @@ a {
       }
       a {
         text-decoration: none;
-        background-color: rbga(44, 104, 255, 0.455);
-        color: rgb(44, 104, 255);
+        background-color: rgb(44, 104, 255);
+        color: white;
         padding: 0.25rem 0.5rem;
         border-radius: 10px;
       }
@@ -117,5 +119,25 @@ a {
         border-right: none;
       }
     }
+  }
+}
+.tablePagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  > button {
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    background-color: rgb(44, 104, 255);
+    color: white;
+  }
+  :disabled {
+    background-color: rgb(205, 201, 201);
   }
 }

@@ -96,7 +96,8 @@ const Products = () => {
       column,
       data,
       "Products",
-      "dashboardProductBox"
+      "dashboardProductBox",
+      true
     )
   ,[])
   return (

@@ -22,13 +22,13 @@
 
 .product-management {
   @include flex(row, center, unset);
-  padding: 4rem;
+  padding: 2rem;
 
   > section {
     overflow-y: auto;
     width: 100%;
     height: 85vh;
-    max-width: 500px;
+    max-width: 450px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.216);
     background-color: white;
     padding: 5rem;
@@ -123,6 +123,7 @@
   }
 
   .shipping-info-card {
+    overflow-y: auto;
     > h1 {
       text-align: center;
       @include heading(2px);
