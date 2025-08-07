@@ -8,10 +8,13 @@ import {
   Legend,
   type ChartData,
   type ChartOptions,
-  ArcElement
+  ArcElement,
+  PointElement,
+  LineElement,
+  Filler,
 
 } from 'chart.js';
-import { Bar, Doughnut } from 'react-chartjs-2';
+import { Bar, Doughnut, Line, Pie } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
@@ -20,9 +23,13 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement
+  ArcElement,
+  PointElement,
+  LineElement,
+  Filler
 );
 
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 interface barChartProps{
     data1:number[],
     data2:number[],
@@ -34,7 +41,7 @@ interface barChartProps{
     labels?:string[]
 }
 
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
 
 export function BarChart({data1=[],data2=[],title1,title2,bgColor1,bgColor2,horizontal,labels=months}:barChartProps) {
     const options:ChartOptions<"bar"> = {
@@ -133,3 +140,78 @@ export  function DoughnutChart({data,labels,bgColor,cutout,legends,offset}:dough
 
     return <Doughnut data={doughnutData} options={doughnutOptions}/>
 }
+
+// pie chart
+interface pieChartprops{
+  labels:string[],
+  data:number[],
+  bgColor:string[],
+  offset?:number[]
+  
+}
+
+export function PieChart({data,labels,bgColor,offset}:pieChartprops){
+
+  const pieChartOption:ChartOptions<"pie">={
+    responsive:true,
+    plugins:{
+        legend:{
+            display:false,
+        }
+    },
+  }
+
+  const pieChartData:ChartData<"pie">={
+    labels,
+    datasets:[
+      {
+        data,
+        backgroundColor:bgColor,
+        offset //offset give margin
+      }
+    ]
+    
+  }
+  return <Pie data={pieChartData} options={pieChartOption} />
+}
+
+// line Chart
+interface lineChartProps{
+  label:string,
+  data:number[],
+  bgColor:string,
+  borderColor:string,
+  labels?:string[]
+}
+
+export function LineChart({label,labels,data,bgColor,borderColor}:lineChartProps){
+
+  const lineChartOptions:ChartOptions<"line">={
+    responsive:true,
+    plugins:{
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+        text: 'Revenue',
+      },
+    },
+  }
+
+  const lineChartData:ChartData<"line">={
+    labels,
+    datasets:[
+      {
+       fill:true,
+       label,
+       data,
+       borderColor,
+       backgroundColor:bgColor
+      }
+    ]
+  }
+  return <Line data={lineChartData} options={lineChartOptions}/>
+}
+
+
