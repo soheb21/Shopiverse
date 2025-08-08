@@ -3,6 +3,7 @@
 @use "product" as *;
 @use "chart" as *;
 @use "dashboardApps" as *;
+@use "responsive" as *;
 
 :root {
   font-family: Inter, system-ui, Avenir, Arial, Helvetica, sans-serif;
@@ -37,6 +38,7 @@ a {
     background-color: white;
     padding: 1rem;
     overflow-y: auto;
+    z-index: 9;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -141,4 +143,35 @@ a {
   :disabled {
     background-color: rgb(205, 201, 201);
   }
+}
+
+#hamburger{
+  border: 2px solid red;
+  display: grid;
+  place-content: center;
+  @include square(2rem);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: rgba(44, 104, 255);
+  position: fixed;
+  top: 1rem;
+  left: 1.1rem;
+  font-size: 2rem;
+  background-color: white;
+  border-radius: 50%;
+  z-index: 9;
+}
+
+#close-sidebar{
+  display: block;
+  cursor: pointer;
+  background-color: rgb(168, 2, 2);
+  color: white;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.75rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
 }

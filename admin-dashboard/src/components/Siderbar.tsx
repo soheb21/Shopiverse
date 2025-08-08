@@ -1,19 +1,51 @@
+import { useEffect, useState } from "react"
 import type { IconType } from "react-icons"
 import { AiFillFileText } from "react-icons/ai"
 import { FaChartBar, FaChartLine, FaChartPie, FaGamepad, FaStopwatch } from "react-icons/fa"
+import { HiMenuAlt4 } from "react-icons/hi"
 import { IoIosPeople } from "react-icons/io"
 import { RiCoupon3Fill, RiDashboardFill,RiShoppingBagFill } from "react-icons/ri"
 import { Link, useLocation, type Location } from "react-router-dom"
 
 const Siderbar = () => {
   const location = useLocation()
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const [phoneActive, setPhoneActive] = useState<boolean>(window.innerWidth<1100)
+  const resizehandler=()=>setPhoneActive(window.innerWidth<11000);
+  useEffect(()=>{
+    window.addEventListener("resize",resizehandler);
+    return ()=>{
+      window.removeEventListener("resize",resizehandler);
+    }
+  },[])
   return (
-    <aside>
+    <>
+    {phoneActive && (
+      <button id="hamburger" onClick={() => setShowModal(true)}>
+        <HiMenuAlt4 />
+      </button>
+    )}
+    <aside
+    style={phoneActive?{
+      width :"20rem",
+      height:"100vh",
+      position:"fixed",
+      left:showModal?"0":"-20rem",
+      transition:"all .5s"
+    }:{}}
+    >
       <h2>Logo</h2>
      <DivOne location={location} />
      <DivTwo location={location} />
      <DivThree location={location} />
+
+     {phoneActive && (
+          <button id="close-sidebar" onClick={() => setShowModal(false)}>
+            Close
+          </button>
+        )}
     </aside>
+    </>
   )
 }
 
